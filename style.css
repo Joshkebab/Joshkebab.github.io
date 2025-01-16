@@ -25,6 +25,7 @@
     --bittersweet-shimmer: hsl(0, 43%, 51%);
     --teal: hsl(180 100% 25.1%);
     --crimson: hsl(348 83.3% 47.1%);
+    --rose: hsl(0, 100%, 64%);
     
     
     --ff-poppins: 'Poppins', sans-serif;
@@ -113,7 +114,8 @@ article { display: none; }
         }
 
         .topbar, .content-box {
-            width: 50%;
+            width: 950px; /* Fixed width */
+            max-width: 90%; /* Allow scaling down when the window is small */
             margin-left: auto;
             margin-right: auto;
             background: var(--eerie-black2);
@@ -121,6 +123,36 @@ article { display: none; }
             border-radius: 20px;
             box-shadow: var(--shadow1);
             padding: 15px;
+        }
+
+        .topbar {
+            position: relative;
+        }
+
+        .topbar-info-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 48px;
+            height: 48px;
+            background: var(--bg-gradient-jet);
+            border: var(--bg-gradient-jet);
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            cursor: pointer;
+        }
+
+        .chevron-icon {
+            width: 26px;
+            height: 26px;
+            margin: 10px;
+            background: var(--icon-gradient-purplerose);
+            -webkit-mask-image: url('./images/chevron-down.svg');
+            mask-image: url('./images/chevron-down.svg');
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-size: contain;
+            mask-size: contain;
         }
 
 /* Topbar info styles - The text and stuff */
@@ -134,6 +166,7 @@ article { display: none; }
         font-size: var(--fs1);
         font-weight: var(--fw500);
         letter-spacing: -0.25px;
+        transition: var(--transition1);
     }
 
     .topbar-info .title { 
@@ -141,6 +174,7 @@ article { display: none; }
         font-size: var(--fs4);
         font-weight: var(--fw300);
         letter-spacing: -0.25px;
+        transition: var(--transition1);
     }
 
     .topbar-content {
@@ -148,9 +182,16 @@ article { display: none; }
         align-items: center;
     }
 
-    .divider {
-        height: 50px; /* Adjust height as needed */
-        width: 1px;
+    .avatar-divider {
+        height: 50px; /* Divider length */
+        width: 2px;
+        background-color: var(--jet);
+        margin: 0 15px;
+    }
+
+    .contact-divider {
+        height: 50px; /* Divider length */
+        width: 2px;
         background-color: var(--jet);
         margin: 0 15px;
     }
@@ -185,12 +226,14 @@ article { display: none; }
             -webkit-mask-repeat: no-repeat;
             mask-repeat: no-repeat;
         }
+    
 
 /* Avatar box styles */
 
 .avatar-box img {
     border-radius: 10%;
     width: 150px;
+    transition: var(--transition1);
 }
 
 .avatar-box {
@@ -202,5 +245,27 @@ article { display: none; }
 .content-box {
     position: relative;
     top: 5x; /* This controls how far below the topbar the content is */
-    width: 50.5%; /* Bit of a hack but we'll take it */
+
+}
+
+/* Responsive adjustments for mobile screens */
+@media (max-width: 1000px) {
+    .avatar-box img {
+        width: 100px;
+    }
+    .topbar-info .name {
+        font-size: calc(var(--fs1) * 0.8);
+    }
+    .topbar-info .title {
+        font-size: calc(var(--fs4) * 0.8);
+    }
+    .contact-pairs {
+        display: none;
+    }
+    .topbar-info-btn {
+        display: block;
+    }
+    .contact-divider {
+        display: none;
+    }
 }
