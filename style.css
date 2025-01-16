@@ -239,6 +239,12 @@ article { display: none; }
             -webkit-mask-repeat: no-repeat;
             mask-repeat: no-repeat;
         }
+
+    .below-contacts {
+        display: none;
+        align-items: center;
+        margin-top: 15px;
+    }
     
 
 /* Avatar box styles */
@@ -275,7 +281,7 @@ article { display: none; }
     .topbar-info .title {
         font-size: calc(var(--fs4) * 0.8);
     }
-    .contact-pairs {
+    .topbar-info-more {
         display: none;
     }
     .topbar-info-btn {
@@ -287,4 +293,12 @@ article { display: none; }
     .chevron-icon {
         margin: 15%;
     }
+}
+
+/* .topbar.show-contacts .contact-pairs {
+    display: block;
+} */
+
+.topbar.show-contacts .below-contacts {
+    display: flex;
 }
