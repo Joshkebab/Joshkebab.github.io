@@ -5,6 +5,7 @@
     --bg-gradient-jet: linear-gradient(to bottom right, hsla(240, 1%, 18%, .251) 3%, hsla(240, 2%, 11%, 0) 100%), hsl(240, 2%, 13%);
     --bg-gradient-yellow1: linear-gradient(to bottom right, hsl(45, 100%, 71%) 0%, hsla(36, 100%, 69%, 0) 50%);
     --bg-gradient-yellow2: linear-gradient(135deg, hsla(45, 100%, 71%, .251) 0%, hsla(35, 100%, 68%, 0) 59.86%), hsl(240, 2%, 13%);
+    --bg-gradient-purplerose: linear-gradient(135deg, #bc20ab 0%, hsla(0, 100%, 50%, 0.007) 59.86%), hsl(240, 2%, 13%);
     --border-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50%);
     --text-gradient-yellow: linear-gradient(to left, hsl(0, 69%, 51%), hsl(180 100% 25.1%));
     --text-gradient-purple: linear-gradient(to left, hsl(221, 100%, 50%), hsl(0, 100%, 50%));
@@ -129,6 +130,8 @@ article { display: none; }
             position: relative;
         }
 
+        /* Contact info button styles */
+
         .topbar-info-btn {
             position: absolute;
             top: 0;
@@ -140,12 +143,19 @@ article { display: none; }
             border-top-right-radius: 20px;
             border-bottom-left-radius: 20px;
             cursor: pointer;
+            z-index: 1;
+            display: none;
         }
+
+        .topbar-info-btn:hover, .topbar-info-btn:focus { background: var(--bg-gradient-purplerose); }
+        .topbar-info-btn:hover::before, .topbar-info-btn:focus::before { background: var(--bg-gradient-purplerose); }
+
+        .topbar-info-btn span { display: none;}
 
         .chevron-icon {
             width: 26px;
             height: 26px;
-            margin: 10px;
+            margin: 20%;
             background: var(--icon-gradient-purplerose);
             -webkit-mask-image: url('./images/chevron-down.svg');
             mask-image: url('./images/chevron-down.svg');
@@ -153,6 +163,7 @@ article { display: none; }
             mask-repeat: no-repeat;
             -webkit-mask-size: contain;
             mask-size: contain;
+            
         }
 
 /* Topbar info styles - The text and stuff */
@@ -200,6 +211,7 @@ article { display: none; }
         display: flex;
         align-items: center;
         margin-top: 0px;
+        
     }
 
         .contact-pair img {
@@ -212,6 +224,7 @@ article { display: none; }
         .contact-pair p {
             color: var(--white2);
             font-size: var(--fs4);
+            transition: var(--transition2);
         }
 
         /* Icon box styles for contact icons */
@@ -253,6 +266,9 @@ article { display: none; }
     .avatar-box img {
         width: 100px;
     }
+    .avatar-box {
+        margin-left: 15px;
+    }
     .topbar-info .name {
         font-size: calc(var(--fs1) * 0.8);
     }
@@ -267,5 +283,8 @@ article { display: none; }
     }
     .contact-divider {
         display: none;
+    }
+    .chevron-icon {
+        margin: 15%;
     }
 }
