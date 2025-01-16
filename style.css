@@ -128,6 +128,13 @@ article { display: none; }
 
         .topbar {
             position: relative;
+            max-height: 180px; /* Initial height */
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        .topbar.show-contacts {
+            max-height: 405px; /* Expanded height */
         }
 
         /* Contact info button styles */
@@ -145,11 +152,10 @@ article { display: none; }
             cursor: pointer;
             z-index: 1;
             display: none;
+            box-shadow: var(--shadow1);
         }
 
-        .topbar-info-btn:hover, .topbar-info-btn:focus { background: var(--bg-gradient-purplerose); }
-        .topbar-info-btn:hover::before, .topbar-info-btn:focus::before { background: var(--bg-gradient-purplerose); }
-
+        .topbar-info-btn:hover { background: var(--bg-gradient-purplerose); }
         .topbar-info-btn span { display: none;}
 
         .chevron-icon {
@@ -211,7 +217,8 @@ article { display: none; }
         display: flex;
         align-items: center;
         margin-top: 0px;
-        
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
     }
 
         .contact-pair img {
@@ -241,11 +248,32 @@ article { display: none; }
         }
 
     .below-contacts {
-        display: none;
+        display: flex;
         align-items: center;
         margin-top: 15px;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
     }
-    
+
+    .topbar.show-contacts .below-contacts {
+        opacity: 1;
+    }
+
+    /* Below contact pair transistions */
+    .topbar.show-contacts .below-contact-pair:nth-child(1) {
+        transition-delay: 0.1s;
+        opacity: 1;
+    }
+
+    .topbar.show-contacts .below-contact-pair:nth-child(2) {
+        transition-delay: 0.2s;
+        opacity: 1;
+    }
+
+    .topbar.show-contacts .below-contact-pair:nth-child(3) {
+        transition-delay: 0.3s;
+        opacity: 1;
+    }
 
 /* Avatar box styles */
 
@@ -267,13 +295,16 @@ article { display: none; }
 
 }
 
-/* Responsive adjustments for mobile screens */
+/* Responsive adjustments window scaling */
 @media (max-width: 1000px) {
     .avatar-box img {
         width: 100px;
     }
     .avatar-box {
         margin-left: 15px;
+    }
+    .topbar {
+        max-height: 130px;
     }
     .topbar-info .name {
         font-size: calc(var(--fs1) * 0.8);
@@ -293,12 +324,20 @@ article { display: none; }
     .chevron-icon {
         margin: 15%;
     }
+    
 }
 
-/* .topbar.show-contacts .contact-pairs {
-    display: block;
-} */
+@media (min-width: 1000px) {
+    .below-contacts {
+        display: none;
+        opacity: 0;
+    }
+    
+}
+
+/* Functions */
 
 .topbar.show-contacts .below-contacts {
     display: flex;
+    opacity: 1;
 }
