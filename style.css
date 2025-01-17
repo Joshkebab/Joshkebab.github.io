@@ -249,10 +249,24 @@ article { display: none; }
 
     .below-contacts {
         display: flex;
+        flex-direction: column;
         align-items: center;
         margin-top: 15px;
         opacity: 0;
         transition: opacity 0.5s ease-in-out;
+    }
+
+    .below-contact-pairs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0 50px;
+    }
+
+    .below-contact-separator {
+        width: 100%; /* Divider length */
+        height: 2px;
+        background-color: var(--jet);
+        margin: 16px;
     }
 
     .topbar.show-contacts .below-contacts {
@@ -325,6 +339,24 @@ article { display: none; }
         margin: 15%;
     }
     
+}
+
+@media (max-width: 700px) {
+    .below-contact-pairs {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 580px) {
+    .topbar {
+        max-height: 110px;
+    }
+    .avatar-box img {
+        width: 80px;
+    }
+    .avatar-divider {
+        display: none;
+    }
 }
 
 @media (min-width: 1000px) {
